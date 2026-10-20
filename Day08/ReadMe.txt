@@ -1,0 +1,1 @@
+This folder contains MCP server and client creation and how to call these tools 
