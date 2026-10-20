@@ -26,6 +26,7 @@ def generate_password(length=12):
         
     return password
 
+# Given a filename, read the contents of the file and return it as a string.S
 def read_text_file(filename):
 
     try:
