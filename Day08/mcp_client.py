@@ -28,8 +28,8 @@ async def execute_tool(client, tool_name, arguments=None):
     """Execute a tool on the MCP server.""" 
     print("........1..............")
     arguments = dict(arguments) if arguments is not None else {}
-    print("........2.............. tool_name --> ", tool_name.name)      
+    print("........2.............. tool_name --> ", tool_name)      
     
-    result = await client.call_tool(tool_name.name, arguments)
+    result = await client.call_tool(tool_name, arguments)
     print(f"\n\n MCP Client -->>>Executed tool '{tool_name}' with result:", result)
     return result

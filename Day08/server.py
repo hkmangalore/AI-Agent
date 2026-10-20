@@ -4,7 +4,6 @@ from fastmcp import FastMCP
 mcp = FastMCP("Time Server")
 
 @mcp.tool()
-
 def current_time():
     # Below line is tool description
     """Return the current date and time."""
@@ -37,7 +36,13 @@ def do_nothing():
 
     return "MCP Server -->>>do_nothing tool executed successfully."
 
-
+@mcp.tool()
+def book_movie_ticket():
+    # Below line is tool description
+    """Book a Movie Ticket from the Movie App."""
+    print("MCP Server -->>>Executing book_movie_ticket tool.")
+    #connect to movie API and book the ticket
+    return "My Movie ticket Details"
 
 if __name__ == "__main__":
     print("Starting MCP server..")

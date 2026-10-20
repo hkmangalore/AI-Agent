@@ -14,7 +14,7 @@ async def main():
 
     for tool in tools:
         print(f"Executing tool: {tool} \n\n") 
-        result = await execute_tool(client, tool)
+        result = await execute_tool(client, tool.name)
         print(f"Result from tool '{tool}': {result}")
         print("=" * 80)    
         print("=" * 80)    
