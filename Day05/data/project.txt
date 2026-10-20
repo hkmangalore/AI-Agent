@@ -1,0 +1,11 @@
+Project Name: Smart Library System
+Projet Duration: January 2026 to June 2026
+Programming language: Python
+Database:
+SQLite
+Team Members:
+Rahul
+Arjun
+Chaitra
+
+The  objective of this project was to automate library management usning Artifical intelegence
