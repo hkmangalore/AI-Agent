@@ -42,7 +42,7 @@ def book_movie_ticket():
     """Book a Movie Ticket from the Movie App."""
     print("MCP Server -->>>Executing book_movie_ticket tool.")
     #connect to movie API and book the ticket
-    return "My Movie ticket Details"
+    return "Your movie ticket is booked. please check your email for the ticket details"
 
 if __name__ == "__main__":
     print("Starting MCP server..")

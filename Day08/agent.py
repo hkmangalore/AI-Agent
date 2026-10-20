@@ -52,7 +52,10 @@ async def main():
 
     #5. Execute the chosen tool with the provided arguments
     result = await execute_tool(client, tool_name)
-
+    
+    #6. Generate a natural language response based on the tool's output
+    final_answer = generate_response(user_request, result)
+    print("\n\n Final LLM Response: --->  "+final_answer)
 
     # Disconnect from the MCP server
     await disconnect(client)
@@ -73,6 +76,24 @@ def planner(user_request, tools):
     )
     return response.choices[0].message.content.strip()
 
+def generate_response(user_request, tool_request):
+    prompt = f"""
+             The user asked: {user_request}   
+             The tool returned: {tool_request}
+             Answer naturally.
+            """
+    response = client.chat.completions.create(
+
+        model=os.getenv("MODEL"),
+
+        messages=[
+                       {
+                "role":"user",
+                "content":prompt
+            }
+        ]
+    )
+    return response.choices[0].message.content.strip()
 
 def build_tool_description(tools, user_request):
     """Build a description of the tool for the AI agent."""
@@ -94,6 +115,7 @@ def build_tool_description(tools, user_request):
     print("LLM prompt: "+ prompt)
     return prompt
 
+#check if this file being run directly.
 if __name__ == "__main__":
-
+    #start the asynchronous function
     asyncio.run(main())
