@@ -91,7 +91,6 @@ def planner(state, tools):
             TASK: <exact pending task>
             TOOL: <tool_name>
         10. Do not explain anything.
-
     Next Decision:
     """
 
