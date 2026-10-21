@@ -8,6 +8,7 @@ def create_state(user_request, max_steps=5):
         "max_steps": max_steps,
         "actions": [],
         "observations": [],
+        "results": [],
         "finished": False,
         "final_answer": ""
     }

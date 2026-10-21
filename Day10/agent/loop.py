@@ -19,9 +19,10 @@ async def run_agent_loop(
     #Create the agent state
     state = create_state(user_request)
 
+    print(".......................1")
     #Breaks the user's request into tasks
     planned_tasks = decompose_task(user_request)
-
+    print(".......................2")
     #Store the tasks into the state
     for task in planned_tasks:
         add_task (state, task)
@@ -76,6 +77,7 @@ async def run_agent_loop(
         task = None
         tool = None
 
+        # if two line format
         for line in decision.splitlines():
             line = line.strip()
             
@@ -84,4 +86,16 @@ async def run_agent_loop(
             elif line.startswith("TOOL:"):
                 tool = line[5:].strip()    
 
+        # Handle the case where the LLM puts
+        # TASK and TOOL on the same line.
+        if task and "TOOL:" in task:
+
+            parts = task.split(
+                "TOOL:",
+                1
+            )
+
+            task = parts[0].strip()
+            if not tool:
+                tool = parts[1].strip()
         return task, tool

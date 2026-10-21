@@ -1,0 +1,1 @@
+pip install langgraph langchain-google-genai langchain-community neo4j pydantic

@@ -1,0 +1,20 @@
+# Model Context Protocol (MCP) SDK
+mcp[cli]==1.2.0
+
+# Google GenAI SDK
+google-genai==0.1.1
+
+# HTTP Request Handling
+requests==2.31.0
+
+# Retry & Resilience Framework
+tenacity==8.2.3
+
+# Data Validation & Typing
+pydantic==2.6.4
+
+# Core Dependencies for Requests
+urllib3==2.2.1
+certifi==2024.2.2
+charset-normalizer==3.3.2
+idna==3.6
