@@ -57,12 +57,17 @@ def planner(state, tools):
     tool_descriptions = build_tool_description(tools)
     prompt = f"""
     You are an AI Planner
-    Your job is to select the next action
-    and the best tool to complete it.
+    Your job is to select the next unfinished task and the best tool to complete it.
     User Request:
     {state["user_request"]}
     Tasks:
     {state["tasks"]}
+    Pending Tasks:
+    {[
+        item["task"]
+        for item in state["tasks"]
+        if item["status"] == "pending"
+    ]}
     Completed Actions:
     {state["actions"]}
     Observations:

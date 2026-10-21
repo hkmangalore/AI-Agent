@@ -23,10 +23,36 @@ def add_task(state, task):
     })
 
 def complete_task(state, task):
+
+    # Normalize the task received from the planner.
+    # This makes the comparison tolerant of:
+    # "Generate password"
+    # "generate password"
+    # "generate_password"
+
+    normalized_task = (
+        task
+        .strip()
+        .lower()
+        .replace("_", " ")
+    )
+
     for item in state["tasks"]:
-        if items["task"] == task:
+
+        normalized_existing_task = (
+            item["task"]
+            .strip()
+            .lower()
+            .replace("_", " ")
+        )
+
+        if normalized_existing_task == normalized_task:
+
             item["status"] = "completed"
-            return
+
+            return True
+
+    return False
 
 def add_result(state, result):
     state["results"].append(result)
