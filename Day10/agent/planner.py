@@ -78,22 +78,20 @@ def planner(state, tools):
     {tool_descriptions}
     Rules:
         1. Select only ONE pending task.
-        2. The TASK must be copied EXACTLY from the
-        pending task list.
+        2. The TASK must be copied EXACTLY from the pending task list.
         3. Do not change the task wording.
         4. Do not select a completed task.
         5. Select the best available tool for that task.
         6. Use previous observations and results.
         7. If an action failed, reconsider the task.
         8. If there are no pending tasks,return ONLY the word: FINISH
-        9. If tasks are still pending, return exactly
-        two lines in this format:
+        9. If tasks are still pending, return exactly two lines in this format:
             TASK: <exact pending task>
             TOOL: <tool_name>
         10. Do not explain anything.
     Next Decision:
     """
-
+    print("\n\n Prompt: \n", prompt)
     response = client.chat.completions.create(
         model=os.getenv("MODEL"),
         messages=[
