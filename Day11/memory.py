@@ -47,7 +47,8 @@ def cosine_similarity(vector1, vector2):
 
 def save_memory(user_message, assistant_message):
     text = user_message + "\n" + assistant_message
-    embedding = creat_embedding(text)
+    print("save_memory --> text = \n ", text)
+    embedding = create_embedding(text)
     connection= sqlite3.connect(DATABASE)
     cursor = connection.cursor()
 
@@ -66,8 +67,8 @@ def save_memory(user_message, assistant_message):
     connection.commit()
     connection.close()
 
-def search_sementic_memories(query, top_k=3, threshold=0.6):
-    query_embeddings = create_embeddings(query)
+def search_semantic_memories(query, top_k=3, threshold=0.2):
+    query_embeddings = create_embedding(query)
     connection= sqlite3.connect(DATABASE)
     cursor = connection.cursor()
     query = f"""
@@ -93,7 +94,7 @@ def search_sementic_memories(query, top_k=3, threshold=0.6):
         ) in rows:
         memory_embedding=json.loads(embedding_json)
 
-    score = cosine_similarity(query_embedding, memory_embedding)
+    score = cosine_similarity(query_embeddings, memory_embedding)
 
     if score >= threshold:
         results.append({
