@@ -26,7 +26,6 @@ Tool:
 Description:
 {tool.description}
 
-----------------------------
 """
 
     return descriptions

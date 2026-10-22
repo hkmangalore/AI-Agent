@@ -16,35 +16,35 @@ client = OpenAI(
 def format_answer(state):
 
     prompt = f"""
-The user asked:
+    The user asked:
 
-{state["user_request"]}
+    {state["user_request"]}
 
-Relevant Previous Memories:
-{state["memories"]}
+    Relevant Previous Memories:
+    {state["memories"]}
 
-Tasks:
-{state["tasks"]}
+    Tasks:
+    {state["tasks"]}
 
-Actions:
-{state["actions"]}
+    Actions:
+    {state["actions"]}
 
-Observations:
-{state["observations"]}
+    Observations:
+    {state["observations"]}
 
-Intermediate Results:
-{state["results"]}
+    Intermediate Results:
+    {state["results"]}
 
-Give the user a natural and concise answer.
-Use the relevant previous memories when they help answer the user's question.
-Do not mention:
-- planner
-- agent loop
-- MCP
-- internal state
-- tools
-- internal reasoning
-"""
+    Give the user a natural and concise answer.
+    Use the relevant previous memories when they help answer the user's question.
+    Do not mention:
+    - planner
+    - agent loop
+    - MCP
+    - internal state
+    - tools
+    - internal reasoning
+    """
 
     response = client.chat.completions.create(
         model=os.getenv("MODEL"),

@@ -55,8 +55,6 @@ def parse_decision(decision):
     return task, tool
 
 
-
-
 async def run_agent_loop(
     user_request,
     planner,
@@ -122,14 +120,10 @@ async def run_agent_loop(
 
             print("TASK: FINISH")
 
-            answer = format_answer(
-                state
-            )
+            answer = format_answer( state )
 
-            finish(
-                state,
-                answer
-            )
+            finish(state,answer)
+            
             save_memory((user_request, answer))
 
             break
