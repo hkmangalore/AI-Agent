@@ -67,6 +67,26 @@ def save_memory(user_message, assistant_message):
     connection.commit()
     connection.close()
 
+
+def save_semantic_memory(fact):
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+
+    embedding = create_embedding(fact)  
+
+    cursor.execute("""
+            INSERT INTO memories(
+            user_message,
+            assistant_message,
+            embedding
+            )
+            VALUES(?,?,?)
+        """,
+        fact,"", json.dumps(embedding)
+        )
+    connection.commit()
+    connection.close()
+
 def search_semantic_memories(query, top_k=3, threshold=0.2):
     query_embeddings = create_embedding(query)
     connection= sqlite3.connect(DATABASE)

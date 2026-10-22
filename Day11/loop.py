@@ -1,4 +1,5 @@
-from memory import search_semantic_memories, save_memory
+from memory import search_semantic_memories, save_memory,save_semantic_memory
+from memory_extractor import extract_memory
 
 from state import (
     create_state,
@@ -124,7 +125,14 @@ async def run_agent_loop(
 
             finish(state,answer)
             
-            save_memory((user_request, answer))
+            #We preserve the conversation
+            save_memory(user_request, answer)
+            
+            #We ask memory extractor whether that conversion contains somthing worth remembering permanetly. 
+            #if it does, we store that extracted fact as semantic memory
+            fact = extract_memory(user_request, answer)
+            if fact != "NONE":
+                save_semantic_memory(fact)
 
             break
 

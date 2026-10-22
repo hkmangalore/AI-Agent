@@ -43,7 +43,6 @@ def extract_memory(user_message, assistant_message):
 
     if there is nothing useful to remember, 
     return:NONE
-
     """
     response = client.chat.completions.create(
             model=os.getenv("MODEL"),
@@ -54,6 +53,5 @@ def extract_memory(user_message, assistant_message):
                 }
             ]
         )
-
     return response.choices[0].message.content.strip()
     

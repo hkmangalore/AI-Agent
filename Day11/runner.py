@@ -35,9 +35,9 @@ async def main():
 
     state = await run_agent_loop(
         user_request,
-        planner,
-        execute_action,
-        format_answer,
+        planner,#LLM call
+        execute_action,#Toolcall
+        format_answer,#LLM call
         tools,
         client
     )
